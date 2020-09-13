@@ -30,7 +30,6 @@ output = []
 def home_page():
     return render_template('base.html')
 
-#@app.route('/camera',methods=['POST'])
 def gen(camera):
     while True:
         data = camera.get_feed()
@@ -38,12 +37,6 @@ def gen(camera):
         frame=data
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
-"""def gen(camera):
-
-    for frame in camera.get_frame():
-        yield b'--frame\r\nContent-Type: image/jpeg\r\n\r\n'
-        yield frame
-        yield b'\r\n\r\n'"""
 
 @app.route('/video/')
 def video():
